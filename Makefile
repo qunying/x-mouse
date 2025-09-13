@@ -5,5 +5,6 @@
 .SUFFIX: .c
 CC := gcc
 C_FLAGS := -Wall -Wextra -flto -Os -s
-x-mouse: x-mouse.c
+
+x-mouse.exe: x-mouse.c
 	$(CC) -o $@ $(C_FLAGS) $^

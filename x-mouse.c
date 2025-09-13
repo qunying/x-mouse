@@ -5,6 +5,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 // clang-format on
+
 #include <errno.h>
 #include <stdbool.h>
 #include <stdio.h>
@@ -30,9 +31,9 @@ main(int argc, char *argv[])
 {
     struct option opts[] = {
         {"help", no_argument, NULL, 'h'},
-        {"win-tracking", required_argument, NULL, 1000},
-        {"win-raising", required_argument, NULL, 1001},
-        {"delay", required_argument, NULL, 1002},
+        {"win-tracking", required_argument, NULL, 't'},
+        {"win-raising", required_argument, NULL, 'r'},
+        {"delay", required_argument, NULL, 'd'},
         {NULL, 0, NULL, 0},
     };
     int opt;
@@ -47,14 +48,14 @@ main(int argc, char *argv[])
     get_current_info(&xm_st);
     xm_opt = xm_st;
 
-    while ((opt = getopt_long(argc, argv, "h?", opts, &opt_index)) != -1) {
+    while ((opt = getopt_long(argc, argv, "h?t:r:d:", opts, &opt_index)) != -1) {
         switch (opt) {
         case 'h':
         case '?':
             print_usage();
             exit(0);
             break;
-        case 1000:
+        case 't':
             if (!strcmp(optarg, "on")) {
                 xm_opt.win_tracking = true;
             } else if (!strcmp(optarg, "off")) {
@@ -66,7 +67,7 @@ main(int argc, char *argv[])
                 exit(EXIT_FAILURE);
             }
             break;
-        case 1001:
+        case 'r':
             if (!strcmp(optarg, "on")) {
                 xm_opt.win_raising = true;
             } else if (!strcmp(optarg, "off")) {
@@ -78,7 +79,7 @@ main(int argc, char *argv[])
                 exit(EXIT_FAILURE);
             }
             break;
-        case 1002: {
+        case 'd': {
             long  val;
             char *endptr;
             val = strtol(optarg, &endptr, 10);
@@ -161,9 +162,9 @@ static void
 print_usage(void)
 {
     puts("Usage: x-mouse [arguments]\n"
-         "   --win-tracking on/off   Set Windows tracking on/off.\n"
-         "   --win-raising  on/off   Set Windows raising on/off.\n"
-         "   --delay        NUM      Set Windows tracking delay "
+         "   -t,--win-tracking on/off   Set Windows tracking on/off.\n"
+         "   -r,--win-raising  on/off   Set Windows raising on/off.\n"
+         "   -d,--delay        NUM      Set Windows tracking delay "
          "(0~3000ms).\n"
          "\n"
          "-h/?,--help                This help.");
