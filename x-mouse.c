@@ -29,7 +29,8 @@ static void        parse_parameters(int argc, char *argv[], x_mouse_t *xm_opt);
 
 #define X_MOUSE_VERSION   "1.1.0-20250911"
 #define X_MOUSE_COPYRIGHT "Copyright (c) 2025 Zhu, Qun-Ying"
-#define X_MOUSE_LICENSE   "This program is distributed under the terms of GPLv3 or latter."
+#define X_MOUSE_LICENSE \
+    "This program is distributed under the terms of GPLv3 or latter."
 
 int
 main(int argc, char *argv[])
@@ -109,7 +110,9 @@ static void
 print_version_info(void)
 {
     printf("x-mouse version %s, %s\n%s\n",
-            X_MOUSE_VERSION, X_MOUSE_COPYRIGHT, X_MOUSE_LICENSE);
+           X_MOUSE_VERSION,
+           X_MOUSE_COPYRIGHT,
+           X_MOUSE_LICENSE);
 }
 
 static void
@@ -151,8 +154,7 @@ parse_parameters(int argc, char *argv[], x_mouse_t *xm_opt)
             } else if (!strcmp(optarg, "off")) {
                 xm_opt->win_tracking = false;
             } else {
-                printf("invalid argument for %s: %s\n",
-                       opts[1].name, optarg);
+                printf("invalid argument for %s: %s\n", opts[1].name, optarg);
                 exit(EXIT_FAILURE);
             }
             break;
@@ -162,8 +164,7 @@ parse_parameters(int argc, char *argv[], x_mouse_t *xm_opt)
             } else if (!strcmp(optarg, "off")) {
                 xm_opt->win_raising = false;
             } else {
-                printf("invalid argument for %s: %s\n",
-                       opts[2].name, optarg);
+                printf("invalid argument for %s: %s\n", opts[2].name, optarg);
                 exit(EXIT_FAILURE);
             }
             break;
@@ -173,8 +174,7 @@ parse_parameters(int argc, char *argv[], x_mouse_t *xm_opt)
             val = strtol(optarg, &endptr, 10);
             if ((errno == ERANGE && (val == LONG_MIN || val == LONG_MAX))
                 || val < 0 || val > 3000) {
-                printf("invalid argument for %s: %s\n",
-                       opts[3].name, optarg);
+                printf("invalid argument for %s: %s\n", opts[3].name, optarg);
                 exit(EXIT_FAILURE);
             }
             xm_opt->delay = (DWORD)val;
