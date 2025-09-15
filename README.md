@@ -29,7 +29,7 @@ argument:
 Run it with "x-mouse -h" will print out the usage:
 ```
    ./x-mouse.exe -h
-   x-mouse 1.1.0-20250911, Copyright (c) Zhu, Qun-Ying
+   x-mouse version 1.1.0-20250911, Copyright (c) Zhu, Qun-Ying
    This program is distributed under the terms of GPLv3 or latter.
    Usage: x-mouse [arguments]
       -t,--tracking on/off   Set Windows tracking on/off.
@@ -37,5 +37,5 @@ Run it with "x-mouse -h" will print out the usage:
       -d,--delay    NUM      Set Windows tracking delay (0~3000ms).
 
       -v,--version           Print program version.
-     -h/?,--help             This help.
+      -h/?,--help             This help.
 ```
