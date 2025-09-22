@@ -37,5 +37,5 @@ Run it with "x-mouse -h" will print out the usage:
       -d,--delay    NUM      Set Windows tracking delay (0~3000ms).
 
       -v,--version           Print program version.
-      -h/?,--help             This help.
+      -h/?,--help            This help.
 ```
